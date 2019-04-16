@@ -1,4 +1,4 @@
-    
+<!--     
     
 <?php 
 
@@ -29,8 +29,7 @@
 
             $sql ="INSERT INTO customerdetails ( FirstName, Surname, BusinessName, JobTitle, AreaOfCyberSecurity, EmailAddress, Password) VALUES ('$firstName','$surname','$businessName','$jobTitle','$acs','$email','$password')";
             
-            echo $sql; 
-            exit;
+
             
             if($conn->query($sql)){
                 $_SESSION['msg'] = "Your information have been recorder.";
@@ -39,4 +38,4 @@
             }
         }
     }
-?>
+?> -->
