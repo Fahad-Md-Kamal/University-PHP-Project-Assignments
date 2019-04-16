@@ -15,17 +15,26 @@
       <div class="bg-success my-5 py-2 text-light col-lg-10 offset-1">
       
       <?php 
+                $email="";
+                $pass="";
+                if (isset($_GET['email'])) {
+                  $email = $_GET['email'];
+                }
           if(isset($_COOKIE['attempt'])){
           echo " Wait for 3 minutes for further attempts <script> alert('Detected! Suspecious login attempts')</script>";
         }else{
+
+
+
+
     ?>
         <form class="form" action="php_login.php" method="post">
 
-        <input type="hidden" name="page" value="login">
+        <!-- <input type="hidden" name="page" value="login"> -->
 
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="email" class="form-control" id="email">
+                <input type="email" name="email" class="form-control" id="email" value="<?=$email?>">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
