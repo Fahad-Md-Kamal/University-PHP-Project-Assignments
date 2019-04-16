@@ -2,44 +2,52 @@
 <?php 
 session_start();
 
-if ($_POST) {
-
+if($_POST){
     $CourseName = $_POST['CourseName'];
     $CourseFee = $_POST['CourseFee'];
     $CourseDetails = $_POST['CourseDetails'];
     $uploadFile = true;
-    // echo $CourseName.$CourseFee.$CourseDetails;exit;
+// print_r($_FILES['document']);
+    $HaveDoc = 0;
+    
+    if($_FILES['document']['size'] > 0) 
+    {
+        $HaveDoc = 1;
+    }
 
-
+    // echo $CourseName.$CourseFee.$CourseDetails.$HaveDoc;exit;
     $sql = "INSERT INTO CoursesInfo(CourseName,CourseFee,CourseDetails) 
             VALUES ('$CourseName',$CourseFee,'$CourseDetails')";
 
+        echo '<br>'.$sql;
 
-
-    if (empty($CourseName)) {
+        if (empty($CourseName)) {
             $uploadFile = false;
+            echo"Please enter a Unique product name";
             $_SESSION['msg'] = "Please enter a Unique product name";
     }else if(empty($CourseFee) || !is_numeric($CourseFee)){
             $uploadFile = false;
+            echo "Please enter numeric price of the product";
             $_SESSION['msg'] = "Please enter numeric price of the product";
     }else if(empty($CourseDetails)){
             $uploadFile = false;
+            echo "Please enter product details";
             $_SESSION['msg'] = "Please enter product details";
     }else if( strlen($CourseDetails) > 300){
             $uploadFile = false;
+            echo"Please enter product details in 300 words";
             $_SESSION['msg'] = "Please enter product details in 300 words";
-    }else if(!empty($_FILES['document'])){
+    }elseif($HaveDoc == 1){
        
-        // echo $sql;exit;
+        // echo $sql;
         $ValidFileExtensions = ['pdf','doc','docx','txt'];
-        
 
         $fileName = $_FILES['document']['name'];
         $fileSize = $_FILES['document']['size'];
         $fileTmpName = $_FILES['document']['tmp_name'];
         $fileType = $_FILES['document']['type'];
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-        $fileNewName = str_replace(' ', '-', $CourseName).'.'.$fileExtension;
+        $fileNewName = str_replace(' ', '-', $CourseName).'-'.time().'.'.$fileExtension;
         $uploadPath = "docs/".$fileNewName;
     
         if(!in_array($fileExtension,$ValidFileExtensions)){
@@ -58,9 +66,9 @@ if ($_POST) {
             $sql = "INSERT INTO CoursesInfo(CourseName, CourseFee, CourseDetails, CourseFile) 
                     VALUES ('$CourseName',$CourseFee,'$CourseDetails','$fileNewName')";
         }
-        
-    }
 
+        
+    }    
     include_once"dbConnection.php"; 
     $conn = dbConncetion();
     
@@ -84,7 +92,8 @@ if ($_POST) {
             $_SESSION['msg'] = "Failed: ".$conn->error;
         }
     }
-        
+
     header("location:AdminCourses.php");
+
 }
 ?>

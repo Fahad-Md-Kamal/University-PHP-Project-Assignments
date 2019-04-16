@@ -40,8 +40,6 @@ $file = "Register";
   }
 ?>
 
-
-
           <form action="php_Course<?=$file?>.php" method="POST" enctype="multipart/form-data">
             <legend class="text-center"><?=$file?> Course</legend>
             <hr class="bg-light">
@@ -85,6 +83,7 @@ $file = "Register";
       <tr class="bg-primary text-light">
         <th>Course Name</th>
         <th>Course Fee</th>
+        <!-- <th>Course Details</th> -->
         <th>Course Document</th>
         
         <th></th>
