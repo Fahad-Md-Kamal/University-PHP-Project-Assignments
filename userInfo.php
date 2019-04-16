@@ -20,10 +20,11 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
     $AreaOfCyberSecurity = "";
     $EmailAddress = "";
     $Password = "";
-    
+
+
     $file="Reg";
     $btnVal="SUBMIT";
-
+    $state ="";
 
 
 
@@ -42,6 +43,7 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
 
         foreach($result as $row){
             $Id = $row['id'];
+            $CustomerReg = $row['CustomerReg'];
             $FirstName = $row['FirstName'];
             $Surname = $row['Surname'];
             $BusinessName = $row['BusinessName'];
@@ -49,10 +51,12 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
             $AreaOfCyberSecurity = $row['AreaOfCyberSecurity'];
             $EmailAddress = $row['EmailAddress'];
             $Password = $row['Password'];
+            $UserRole = $row['UserRole'];
         }
 
         $file = "Update";
         $btnVal = "UPDATE";
+        $state = "readonly";
     }
 
 
@@ -77,6 +81,10 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
             <input type="hidden" name="id" value="<?=$Id?>">
 
             <div class="form-group">
+                <label for="CustomerReg">First Name:</label>
+                <input type="text" name="CustomerReg" class="form-control" id="CustomerReg" value="<?=$CustomerReg?>" readonly>
+            </div>
+            <div class="form-group">
                 <label for="firstName">First Name:</label>
                 <input type="text" name="firstName" class="form-control" id="firstName" value="<?=$FirstName?>">
             </div>
@@ -98,12 +106,26 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="email" class="form-control" id="email" value="<?=$EmailAddress?>">
+                <input type="email" name="email" class="form-control" id="email" value="<?=$EmailAddress?>" <?=$state?> >
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" name="password" class="form-control" id="password" value="<?=$Password?>">
             </div>
+
+            <?php if($UserRole == "ADMIN"){ ?>
+
+            <div class="form-group">
+                <label for="UserRole">User Role:</label>
+                <select class="form-control" name="UserRole">
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="CUSTOMER">CUSTOMER</option>
+                </select>
+            </div>
+            
+            <?php }else{?>
+                <input type="hidden" name="UserRole" value="CUSTOMER">
+            <?php }?>
             
             <div class="form-group">
                 <input type="submit" class="btn btn-secondary form-control" value="<?=$btnVal?>">
@@ -111,6 +133,15 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
         </form>
 
         
+  <?php if(isset($_SESSION['msg'])){
+    
+    $msg = $_SESSION['msg'];
+    
+    echo "<script>alert('$msg');</script>";
+
+    ;
+    unset($_SESSION['msg']);
+  } ?>
       
       </div>
 
@@ -125,6 +156,7 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
   
 
 <?php }else{
-    header("location:index.php");
+    header("location:login.php");
 }
+
 ?>
