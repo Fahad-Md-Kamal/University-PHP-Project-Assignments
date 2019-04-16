@@ -10,8 +10,8 @@ if($_POST){
     $businessName = $_POST['businessName'];
     $jobTitle = $_POST['jobTitle'];
     $acs = $_POST['acs'];
-    $email = $_POST['email'];
     $password = $_POST['password'];
+    $UserRole = $_POST['UserRole'];
 
 
 
@@ -21,6 +21,7 @@ if($_POST){
     include_once "dbConnection.php";
     $conn = dbConncetion();
 
+
         $sql ="UPDATE customerdetails 
         SET 
         FirstName='$firstName',
@@ -28,17 +29,17 @@ if($_POST){
         BusinessName='$businessName',
         JobTitle='$jobTitle',
         AreaOfCyberSecurity='$acs',
-        EmailAddress='$email',
+        UserRole ='$UserRole',
         Password='$password' WHERE id = '$Id'";
-        
-        echo $sql; 
-        exit;
+
+
+        // echo $sql; 
+        // exit;
         
         if($conn->query($sql)){
             $_SESSION['msg'] = "Your information have been recorder.";
-            unset($_SESSION['email']);
-            unset($_SESSION['pass']);
         }
+        header("location:userInfo.php");
+
     }
-}
 ?>
