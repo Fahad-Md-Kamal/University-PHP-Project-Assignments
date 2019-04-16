@@ -6,7 +6,6 @@ if($_POST){
 
     $email = $_POST['email'];
     $password = $_POST['pass'];
-    $page = $_POST['page'];
 
     if(!isset($_SESSION['attempt'])){
         $_SESSION['attempt'] = 0;
@@ -20,41 +19,30 @@ if($_POST){
     }else{
         $sql = "SELECT * FROM customerdetails where EmailAddress='$email' AND Password = '$password'";
 
-
         $result = $conn->query($sql);
 
         if($user = $result->num_rows > 0){
             foreach($result as $row){
                     $_SESSION['UserName'] = $row['FirstName'];
                     $_SESSION['EmailAddress'] = $row['EmailAddress'];
+                    $_SESSION['UserRole'] = $row['UserRole'];
                 }
                 $_SESSION['loggedIn'] = true;
 
                 unset($_SESSION['attempt']);
-                header("location:$page.php");
+                header("location:index.php");
                 exit;
 
         }else{
             if($_SESSION['attempt'] > 2 ){
-                    setcookie('attempt', true, time() + 180, "/");
-                    unset($_SESSION['attempt']);
+                setcookie('attempt', true, time() + 10, "/");
+                unset($_SESSION['attempt']);
             }
-            $_SESSION['attempt']++;
-        }
+        $_SESSION['attempt']++;
+        $_SESSION['msg'] = "Invalid Email/ Password";
     }
-    if($page == 'login'){
-            $_SESSION['msg'] = "User Name Or Password dosen't match";  
-            header("location:$page.php");
-    }elseif($page == 'index'){
-        $sql = "SELECT * FROM customerdetails where EmailAddress='$email'";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0){
-            $_SESSION['msg'] = "This email already registared in the system. Please Login";
-            header("location:$page.php");
-            exit;
-        }
-        header("location:userInfo.php?email=$email");
     }
+        header("location:login.php?email=$email");
 }
 
 
