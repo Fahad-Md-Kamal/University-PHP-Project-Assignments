@@ -10,56 +10,25 @@ include_once "templates/head.php" ?>
   include_once "templates/mainNav.php";
 
 
-if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
+if(isset($_SESSION['loggedIn'])){
 
-    $Id = "";
-    $FirstName = "";
-    $Surname = "";
-    $BusinessName = "";
-    $JobTitle = "";
-    $AreaOfCyberSecurity = "";
-    $EmailAddress = "";
-    $Password = "";
-
-
-    $file="Reg";
-    $btnVal="SUBMIT";
-    $state ="";
-
-
-
-    if(isset($_GET['email'])){
-            
-        $EmailAddress = $_GET['email'];
-        
-
+    if(isset($_GET['id'])){
+    
+        $id = $_GET['id'];
+    
     }else{
-        include_once"dbConnection.php"; 
-        $conn = dbConncetion();
+    
+        $id = $_SESSION['id'];
+    
+    }
+    
+    include_once"dbConnection.php"; 
+    $conn = dbConncetion();
 
-        $EmailAddress = $_SESSION['EmailAddress'];
-        $sql = "SELECT * FROM customerdetails WHERE EmailAddress ='$EmailAddress'";
+        $sql = "SELECT * FROM customerdetails WHERE id = '$id'";
         $result = $conn->query($sql);
 
         foreach($result as $row){
-            $Id = $row['id'];
-            $CustomerReg = $row['CustomerReg'];
-            $FirstName = $row['FirstName'];
-            $Surname = $row['Surname'];
-            $BusinessName = $row['BusinessName'];
-            $JobTitle = $row['JobTitle'];
-            $AreaOfCyberSecurity = $row['AreaOfCyberSecurity'];
-            $EmailAddress = $row['EmailAddress'];
-            $Password = $row['Password'];
-            $UserRole = $row['UserRole'];
-        }
-
-        $file = "Update";
-        $btnVal = "UPDATE";
-        $state = "readonly";
-    }
-
-
 
   ?>
 
@@ -70,54 +39,52 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
 
     <div class="row">
 
-      <div class="bg-success my-5 py-2 text-light col-lg-10 offset-1">
-        <form class="form" action="php_User<?=$file?>.php" method="post">
-
-    <?php 
-        
-
-    ?>
-
-            <input type="hidden" name="id" value="<?=$Id?>">
+      <div class="bg-success my-5 py-2 text-light col-lg-6 offset-3">
+        <form class="form" action="php_UserUpdate.php" method="post">
+            <hr class="bg-light">
+            <legend class="text-center"> User Details</legend>
+            <hr class="bg-light">
+            <input type="hidden" name="id" value="<?=$row['id']?>">
 
             <div class="form-group">
                 <label for="CustomerReg">First Name:</label>
-                <input type="text" name="CustomerReg" class="form-control" id="CustomerReg" value="<?=$CustomerReg?>" readonly>
+                <input type="text" name="CustomerReg" class="form-control" id="CustomerReg" value="<?=$row['CustomerReg']?>" readonly>
             </div>
             <div class="form-group">
                 <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" class="form-control" id="firstName" value="<?=$FirstName?>">
+                <input type="text" name="firstName" class="form-control" id="firstName" value="<?=$row['FirstName']?>">
             </div>
             <div class="form-group">
                 <label for="surname">Surname:</label>
-                <input type="text" name="surname" class="form-control" id="surname" value="<?=$Surname?>">
+                <input type="text" name="surname" class="form-control" id="surname" value="<?=$row['Surname']?>">
             </div>
             <div class="form-group">
                 <label for="businessName">Business Name:</label>
-                <input type="text" name="businessName" class="form-control" id="businessName" value="<?=$BusinessName?>">
+                <input type="text" name="businessName" class="form-control" id="businessName" value="<?=$row['BusinessName']?>">
             </div>
             <div class="form-group">
                 <label for="jobTitle">Job Title:</label>
-                <input type="text" name="jobTitle" class="form-control" id="jobTitle" value="<?=$JobTitle?>">
+                <input type="text" name="jobTitle" class="form-control" id="jobTitle" value="<?=$row['JobTitle']?>">
             </div>
             <div class="form-group">
                 <label for="acs">Area Of Cyber Security:</label>
-                <input type="text" name="acs" class="form-control" id="acs" value="<?=$AreaOfCyberSecurity?>">
+                <input type="text" name="acs" class="form-control" id="acs" value="<?=$row['AreaOfCyberSecurity'];?>">
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="email" class="form-control" id="email" value="<?=$EmailAddress?>" <?=$state?> >
+                <input type="email" name="email" class="form-control" id="email" value="<?=$row['EmailAddress']?>" >
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="password" class="form-control" id="password" value="<?=$Password?>">
+                <input type="password" name="password" class="form-control" id="password" value="<?=$row['Password']?>">
             </div>
 
-            <?php if($UserRole == "ADMIN"){ ?>
+            <?php if($_SESSION['UserRole'] == "ADMIN"){ ?>
 
             <div class="form-group">
                 <label for="UserRole">User Role:</label>
                 <select class="form-control" name="UserRole">
+                    <option value="<?=$row['UserRole']?>">Selected As: <?=$row['UserRole']?></option>
                     <option value="ADMIN">ADMIN</option>
                     <option value="CUSTOMER">CUSTOMER</option>
                 </select>
@@ -128,20 +95,19 @@ if(isset($_GET['email']) || isset($_SESSION['loggedIn'])){
             <?php }?>
             
             <div class="form-group">
-                <input type="submit" class="btn btn-secondary form-control" value="<?=$btnVal?>">
+                <input type="submit" class="btn btn-secondary form-control" value="UPDATE">
             </div>
         </form>
 
         
-  <?php if(isset($_SESSION['msg'])){
+            <?php } 
+            if(isset($_SESSION['msg'])){
     
-    $msg = $_SESSION['msg'];
-    
-    echo "<script>alert('$msg');</script>";
-
-    ;
-    unset($_SESSION['msg']);
-  } ?>
+                $msg = $_SESSION['msg'];
+                echo "<script>alert('$msg');</script>";
+                unset($_SESSION['msg']);
+            }
+   ?>
       
       </div>
 
