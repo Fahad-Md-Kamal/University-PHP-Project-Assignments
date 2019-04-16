@@ -21,13 +21,13 @@
           <p class="lead">
             <div class="row">
                 <div class="col-md-6">
-              <?php 
+              <!-- < ?php 
                 if(isset($_COOKIE['attempt'])){
                 echo " Wait for 3 minutes for further attempts <script> alert('Detected! Suspecious login attempts')</script>";
                 }else{
-              ?>
-                    <form action="php_login.php" method="post">
-                    <input type="hidden" name="page" value="index">
+              ?> -->
+                    <form action="php_GetStart.php" method="post">
+
                         <input class="form-control" Id="email" type="email" name="email" placeholder="Email" autofocus>
                         <!-- <small id="emailHelp" class="form-text text-muted email-msg"></small> -->
 
@@ -38,7 +38,7 @@
                         
                         <input class="btn btn-lg btn-outline-light mt-5" onclick="return emailValid();" type="submit" value="Get Strated">
                     </form>
-                <?php }?>
+                <!-- < ?php }?> -->
                 </div>
             </div>
           </p>
