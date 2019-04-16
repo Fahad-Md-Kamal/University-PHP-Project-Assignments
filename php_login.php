@@ -24,10 +24,12 @@ if($_POST){
         if($user = $result->num_rows > 0){
             foreach($result as $row){
                     $_SESSION['UserName'] = $row['FirstName'];
-                    $_SESSION['EmailAddress'] = $row['EmailAddress'];
+                    $_SESSION['id'] = $row['id'];
                     $_SESSION['UserRole'] = $row['UserRole'];
                 }
                 $_SESSION['loggedIn'] = true;
+
+
 
                 unset($_SESSION['attempt']);
                 header("location:index.php");

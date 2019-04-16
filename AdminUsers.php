@@ -9,7 +9,7 @@
   <?php include_once "templates/mainNav.php" ?>
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="row">
 
