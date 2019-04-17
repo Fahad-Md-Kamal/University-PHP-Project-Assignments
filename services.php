@@ -78,43 +78,43 @@ $file = "Register";
   </div>
 
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped">
-    <thead>
-      <tr class="bg-primary text-light">
-        <th>Course Name</th>
-        <th>Course Fee</th>
-        <th>Course Details</th>
-        <th>Course Document</th>
-        
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php 
+  <div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr class="bg-primary text-light">
+              <th>Course Name</th>
+              <th>Course Fee</th>
+              <th>Course Details</th>
+              <th>Course Document</th>
 
-      $sql = "SELECT * FROM CoursesInfo";
-      $result = $conn->query($sql);
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
 
-      foreach($result as $row){
-          $Id = $row['id'];
-    ?>
-      <tr>
-        <td><?=$row['CourseName']?></td>
-        <td>£<?=$row['CourseFee']?></td>
-        <td><?=$row['CourseDetails']?></td>
-        <td><a class="btn btn-outline-primary" href="docs/<?=$row['CourseFile']?>" download ><?=$row['CourseFile']?></a></td>
-        
-        <td>Download PDF</a></td>
-        <td><a class="btn btn-outline-danger" href="php_deleteCourse.php?id=<?=$row['id']?>">DELETE</a></td>
-      </tr>
-    <?php } ?>
+            $sql = "SELECT * FROM CoursesInfo";
+            $result = $conn->query($sql);
 
-    </tbody>
-  </table>
-  </div>
+            foreach($result as $row){
+            $Id = $row['id'];
+            ?>
+            <tr>
+              <td><?=$row['CourseName']?></td>
+              <td>£<?=$row['CourseFee']?></td>
+              <td><?=$row['CourseDetails']?></td>
+              <td><a class="btn btn-outline-primary" href="docs/<?=$row['CourseFile']?>" download ><?=$row['CourseFile']?></a></td>
+
+              <td><a class="btn btn-outline-danger" href="php_EnrollCourse.php?CourseName=<?=$row['CourseName']?>">Enroll</a></td>
+            </tr>
+            <?php } ?>
+
+          </tbody>
+        </table>
+    </div>
+
+
   </div>
   </div>
 
@@ -124,6 +124,6 @@ $file = "Register";
     unset($_SESSION['msg']);
   } ?>
 
-  <!-- <?php include_once "templates/footerSection.php" ?> -->
+  <!-- < ?php include_once "templates/footerSection.php" ?> -->
 
   <?php include_once "templates/footer.php" ?>

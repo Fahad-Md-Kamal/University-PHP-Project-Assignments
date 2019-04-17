@@ -39,15 +39,13 @@ $sql = "CREATE TABLE CustomerDetails (
 
 
  $sql = "INSERT INTO customerdetails(CustomerReg, FirstName, Surname, BusinessName, JobTitle, AreaOfCyberSecurity, EmailAddress, Password, UserRole) VALUES ('CUR759801','Fahad','Md Kamal','FahadMdKamal','Student','Networking','faahad.hossain@gmail.com','123','ADMIN')";
+ 
  if($conn->query($sql)){
      echo "Inital Customer inserted successfully<br>";
  }
  else{
      die("Failed to input Initail Data".$conn->error);
  }
-
-
-
 
 
 
@@ -67,7 +65,10 @@ $sql = "CREATE TABLE CustomerDetails (
  }
 
 
- $sql = "INSERT INTO CoursesInfo(CourseName, CourseFee, CourseDetails, CourseFile) VALUES ('Fishing Proof expert','250','Curious CyberSecuritie''s dedicatied program','Fising-Proof-Expert-1555423502.txt')";
+ $sql = "INSERT INTO CoursesInfo
+ (CourseName, CourseFee, CourseDetails, CourseFile) 
+ VALUES ('Fishing Proof expert','250','Curious CyberSecuritie''s dedicatied program','Fising-Proof-Expert-1555423502.txt')";
+ 
  if($conn->query($sql)){
      echo "Inital Course created successfully<br>";
  }
@@ -78,12 +79,9 @@ $sql = "CREATE TABLE CustomerDetails (
 
 
 
-
-
-
  $sql = "CREATE TABLE CustomerQuery ( 
     id INT(10) PRIMARY KEY AUTO_INCREMENT , 
-    CourseEmail VARCHAR(100),
+    CustomerEmail VARCHAR(100),
     CustomerMessage VARCHAR(300)
     )";
 
@@ -94,11 +92,44 @@ $sql = "CREATE TABLE CustomerDetails (
  }
 
 
- $sql = "INSERT INTO CustomerQuery(CourseEmail, CustomerMessage) VALUES ('fahadmdkamal@gmail.com','Recently my email addres has been hacked. I''m certain that I have never opened my email in somone elses computer. Except my mobile phone, office PC and home PC. Was it a fishing...?. If so, than I want to do your course to stop this kind of activity in the future.')";
+ $sql = "INSERT INTO CustomerQuery(CourseEmail, CustomerMessage)
+  VALUES ('fahadmdkamal@gmail.com','Recently my email addres has been hacked. I''m certain that I have never opened my email in somone elses computer. Except my mobile phone, office PC and home PC. Was it a fishing...?. If so, than I want to do your course to stop this kind of activity in the future.')";
+ 
  if($conn->query($sql)){
      echo "Inital Customer Query inserted successfully<br>";
  }
  else{
      die("Failed to input Initail Data".$conn->error);
  }
+
+
+
+
+//  UserEnrolled(UserId, CourseId)
+ $sql = "CREATE TABLE CourseEnroll( 
+     id INT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+     CustomerEmail VARCHAR(200), 
+     CourseName VARCHAR(100))";
+
+ if($conn->query($sql)){
+     echo "UserEnrolled Table Created successfully<br>";
+ }else{
+     echo ("Faild To create UserEnrolled table". $conn->error);
+ }
+
+
+ $sql = "INSERT INTO CourseEnroll(CustomerEmail, CourseName)
+  VALUES (
+      'faahad.hossain@gmail.com',
+      'Fishing Proof expert'
+      )";
+
+ if($conn->query($sql)){
+     echo "Inital Course inserted successfully<br>";
+ }
+ else{
+     die("Failed to input Initail Course Data".$conn->error);
+ }
+
+
 ?>

@@ -46,6 +46,7 @@
 
       </div>
 
+
     <div class="row">
       <div class="col-sm-12 col-lg-4 mb-4">
         <div class="card h-100">
@@ -101,7 +102,6 @@
     
     echo "<script>alert('$msg');</script>";
 
-    ;
     unset($_SESSION['msg']);
   } ?>
 

@@ -16,9 +16,11 @@
                Admin Control
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item bg-success text-light" href="AdminUsers.php">Users Control</a>
+                <a class="dropdown-item" href="AdminUsers.php">Users Control</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item bg-secondary text-light" href="AdminCourses.php">Traning Courses</a>
+                <a class="dropdown-item" href="AdminCourses.php">Traning Courses</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="AdminEnrollList.php">Enroll List</a>
                 </div>
 
             </div>

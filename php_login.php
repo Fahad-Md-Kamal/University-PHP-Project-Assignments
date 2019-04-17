@@ -21,11 +21,12 @@ if($_POST){
 
         $result = $conn->query($sql);
 
-        if($user = $result->num_rows > 0){
+        if($result->num_rows > 0){
             foreach($result as $row){
                     $_SESSION['UserName'] = $row['FirstName'];
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['UserRole'] = $row['UserRole'];
+                    $_SESSION['EmailAddress'] = $row['EmailAddress'];
                 }
                 $_SESSION['loggedIn'] = true;
 

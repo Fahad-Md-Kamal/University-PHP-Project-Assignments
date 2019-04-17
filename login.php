@@ -24,9 +24,6 @@
           echo " Wait for 3 minutes for further attempts <script> alert('Detected! Suspecious login attempts')</script>";
         }else{
 
-
-
-
     ?>
         <form class="form" action="php_login.php" method="post">
 

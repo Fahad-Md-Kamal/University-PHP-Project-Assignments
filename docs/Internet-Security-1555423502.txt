@@ -1,7 +1,0 @@
-let list = document.querySelectorAll('.match-results-card');
-
-for (var x = 0, ln = list.length; x < ln; x++) {
-  setTimeout(function(y) {
-	window.open(list[y], '_blank');
-  }, x * 5000, x);
-}
