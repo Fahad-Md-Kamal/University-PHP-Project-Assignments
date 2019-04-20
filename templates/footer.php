@@ -10,8 +10,15 @@
   <script src="vendor/fontawsome/fontawsome.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
+  <?php if(isset($_SESSION['msg'])){
+    
+    $msg = $_SESSION['msg'];
+    
+    echo "<script>alert('$msg')</script>";
 
-  
+    unset($_SESSION['msg']);
+  } ?>
+
 </body>
 
 </html>

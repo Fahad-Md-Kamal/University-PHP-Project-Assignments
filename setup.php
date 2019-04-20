@@ -54,8 +54,7 @@ $sql = "CREATE TABLE CustomerDetails (
     id INT(10) PRIMARY KEY AUTO_INCREMENT , 
     CourseName VARCHAR(100),
     CourseFee VARCHAR(5), 
-    CourseDetails VARCHAR(300), 
-    CourseFile VARCHAR(100)
+    CourseDetails VARCHAR(300)
     )";
 
  if($conn->query($sql)){
@@ -66,8 +65,8 @@ $sql = "CREATE TABLE CustomerDetails (
 
 
  $sql = "INSERT INTO CoursesInfo
- (CourseName, CourseFee, CourseDetails, CourseFile) 
- VALUES ('Fishing Proof expert','250','Curious CyberSecuritie''s dedicatied program','Fising-Proof-Expert-1555423502.txt')";
+ (CourseName, CourseFee, CourseDetails) 
+ VALUES ('Fishing Proof expert','250','Curious CyberSecuritie''s dedicatied program')";
  
  if($conn->query($sql)){
      echo "Inital Course created successfully<br>";
@@ -92,7 +91,7 @@ $sql = "CREATE TABLE CustomerDetails (
  }
 
 
- $sql = "INSERT INTO CustomerQuery(CourseEmail, CustomerMessage)
+ $sql = "INSERT INTO CustomerQuery(CustomerEmail, CustomerMessage)
   VALUES ('fahadmdkamal@gmail.com','Recently my email addres has been hacked. I''m certain that I have never opened my email in somone elses computer. Except my mobile phone, office PC and home PC. Was it a fishing...?. If so, than I want to do your course to stop this kind of activity in the future.')";
  
  if($conn->query($sql)){
@@ -130,6 +129,45 @@ $sql = "CREATE TABLE CustomerDetails (
  else{
      die("Failed to input Initail Course Data".$conn->error);
  }
+
+
+
+//  UserEnrolled(UserId, CourseId)
+$sql = "CREATE TABLE MediaFile( 
+    id INT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    FileName VARCHAR(200),
+    FileLink VARCHAR(100),
+    MediaType VARCHAR(2))";
+
+if($conn->query($sql)){
+    echo "MediaFile Table Created successfully<br>";
+}else{
+    echo ("Faild To create MediaFile table". $conn->error);
+}
+
+
+$sql = "INSERT INTO MediaFile
+    (FileName, FileLink, MediaType)
+ VALUES (
+     'Cyber Security Intro',
+     'https://www.youtube.com/watch?v=-wv1egc7qCA','V'
+     )";
+
+if($conn->query($sql)){
+    echo "Inital MediaFile inserted successfully<br>";
+}
+else{
+    die("Failed to input Initail MediaFile".$conn->error);
+}
+
+$sql = "INSERT INTO MediaFile(FileName, FileLink, MediaType)VALUES ('Cybersecurity Intro','Mozart.mp3','A')";
+
+if($conn->query($sql)){
+    echo "Inital MediaFile inserted successfully<br>";
+}
+else{
+    die("Failed to input Initail MediaFile".$conn->error);
+}
 
 
 ?>

@@ -13,3 +13,8 @@ body {
   color: #ffffff;
 }
 
+
+video.MyVideo {
+  width: 100%;
+}
+

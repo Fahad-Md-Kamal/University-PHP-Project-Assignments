@@ -1,13 +1,10 @@
 <?php session_start();
 
 if(!isset($_COOKIE['notification'])){
-  setcookie('notification', true, time() + (86400 * 30), "/");
+  setcookie('notification', true, time() + 360, "/");
   echo "<script> alert('This website uses cookie in the background.')</script>";
 }
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

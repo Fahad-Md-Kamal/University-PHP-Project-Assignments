@@ -103,7 +103,7 @@ $file = "Register";
       <tr>
         <td><?=$row['CourseName']?></td>
         <td>£<?=$row['CourseFee']?></td>
-        <td><?=$row['CourseFile']?></td>
+        <td><?=$row['CourseDetails']?></td>
         
         <td><a class="btn btn-outline-primary" href="AdminCourses.php?id=<?=$row['id']?>">EDIT</a></td>
         <td><a class="btn btn-outline-danger" href="php_deleteCourse.php?id=<?=$row['id']?>">DELETE</a></td>

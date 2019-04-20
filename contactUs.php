@@ -4,25 +4,37 @@
   <?php include_once "templates/mainNav.php" ?>
 
 
+<?php 
 
+
+?>
 
   <!-- Page Content -->
   <div class="container">
 
     <div class="row">
+<div class="col-md-6 offset-3 bg-success text-light my-3">
+    <form class="form my-5" action="php_ContactUs.php" method="post">
+<legend class="text-center">Query or Feedback</legend>
+<!-- <input type="hidden" name="page" value="login"> -->
+
+    <div class="form-group">
+        <label for="CQ">Type your message:</label>
+        <textarea class="form-control" name="CQ" id="CQ" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="CustomerEmail">Your Email:</label>
+        <input type="email" name="CustomerEmail" class="form-control" id="CustomerEmail">
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" class="btn btn-info form-control" value="SEND">
+    </div>
+</form>
+</div>
 
 
-      <div class="col-lg-9">
-        <?php include_once "templates/carousuel.php" ?>
-        <div class="row">
-          <?php include_once "templates/prouducts.php" ?>
-        </div>
-      </div>
 
-      <div class="col-lg-3">
-        <h1 class="my-4">Shop Name</h1>
-          <?php include_once "templates/sidebar.php" ?>
-      </div>
     </div>
 
   </div>

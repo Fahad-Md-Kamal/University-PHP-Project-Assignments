@@ -21,8 +21,13 @@
                 <a class="dropdown-item" href="AdminCourses.php">Traning Courses</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="AdminEnrollList.php">Enroll List</a>
-                </div>
-
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="AdminMedia.php">Media</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="AdminContact.php">User Contact</a>
+                <!--  -->
+              </div>
+                
             </div>
       <?php }?>
         <ul class="navbar-nav ml-auto">
