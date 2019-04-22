@@ -3,12 +3,6 @@
   <!-- Navigation -->
   <?php include_once "templates/mainNav.php" ?>
 
-
-<?php 
-
-
-?>
-
   <!-- Page Content -->
   <div class="container">
 
@@ -16,11 +10,10 @@
 <div class="col-md-6 offset-3 bg-success text-light my-3">
     <form class="form my-5" action="php_ContactUs.php" method="post">
 <legend class="text-center">Query or Feedback</legend>
-<!-- <input type="hidden" name="page" value="login"> -->
 
     <div class="form-group">
         <label for="CQ">Type your message:</label>
-        <textarea class="form-control" name="CQ" id="CQ" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="CQ" id="CQ" rows="10"></textarea>
     </div>
     <div class="form-group">
         <label for="CustomerEmail">Your Email:</label>

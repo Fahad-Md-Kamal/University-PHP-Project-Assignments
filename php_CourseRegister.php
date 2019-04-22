@@ -10,11 +10,9 @@ if($_POST){
     
 
 
-    // echo $CourseName.$CourseFee.$CourseDetails.$HaveDoc;exit;
     $sql = "INSERT INTO CoursesInfo(CourseName,CourseFee,CourseDetails) 
             VALUES ('$CourseName',$CourseFee,'$CourseDetails')";
 
-        // echo '<br>'.$sql;
 
     if (empty($CourseName)) {
             $uploadFile = false;
@@ -39,7 +37,6 @@ if($_POST){
         if($uploadFile){
             
             $chk = "SELECT * FROM CoursesInfo WHERE CourseName = '$CourseName'";
-            // echo $chk;exit;
             
             $result = $conn->query($chk);
             if($result->num_rows > 0){

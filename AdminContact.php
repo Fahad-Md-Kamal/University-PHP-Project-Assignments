@@ -1,24 +1,14 @@
 <?php include_once "templates/head.php";
 
   if($_SESSION['UserRole'] != "ADMIN"){
-    header("location:login.php");
-  }
-?>
-
+    header("location:login.php");}?>
   <!-- Navigation -->
   <?php include_once "templates/mainNav.php"; 
-  
   include_once"dbConnection.php"; 
-  $conn = dbConncetion();
-  
-  ?>
+  $conn = dbConncetion();?>
 
   <!-- Page Content -->
   <div class="container">
-
-
-
-
 
     <div class="row my-3">
 
@@ -38,18 +28,9 @@
           <a class="btn btn-outline-danger" href="php_RemoveQuery.php?CqId=<?=$row['id']?>">DELETE</a>
           </div>
         </div>
-
-        <!-- <td></td> -->
-        <!-- <td></td> -->
-        <!-- <td></td> -->
         
-        <!-- <td><a class="btn btn-outline-primary" href="AdminCourses.php?id=<?=$row['id']?>">Replay</a></td> -->
       </tr>
-      <!-- <tr><td><hr class="bg-light"></td></tr> -->
     <?php } ?>
-
-    <!-- </tbody>
-  </table> -->
 
 
         </div>
@@ -63,6 +44,5 @@
     unset($_SESSION['msg']);
   } ?>
 
-  <!-- <?php include_once "templates/footerSection.php" ?> -->
 
   <?php include_once "templates/footer.php" ?>

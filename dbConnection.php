@@ -11,7 +11,4 @@ function dbConncetion(){
 
     return $conn;
 }
-
-
-
 ?>

@@ -1,10 +1,11 @@
 <?php session_start();
 
 if(!isset($_COOKIE['notification'])){
-  setcookie('notification', true, time() + 360, "/");
+  setcookie('notification', true, time() + 3600, "/");
   echo "<script> alert('This website uses cookie in the background.')</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +20,7 @@ if(!isset($_COOKIE['notification'])){
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="vendor/fontawsome/css/fontawsome.css" rel="stylesheet">
+  <link href="vendor\fontawsome\fontawsome.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">

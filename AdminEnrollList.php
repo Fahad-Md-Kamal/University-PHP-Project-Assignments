@@ -56,6 +56,5 @@
 
   </div>
   </div>
-  <!-- <?php include_once "templates/footerSection.php" ?> -->
 
   <?php include_once "templates/footer.php" ?>

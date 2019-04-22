@@ -17,49 +17,23 @@
   <div class="container">
 
     <div class="row my-3">
-
-        <div class="col-lg-6 bg-dark text-light offset-lg-3">
-
-          <form action="php_VideoUpload.php" method="POST" enctype="multipart/form-data">
-            <legend class="text-center">Upload Video Link</legend>
-            <hr class="bg-light">
-
-              <div class="form-group">
-              <input type="hidden" name="mtype" value="V">
-                <label for="FileName">Video Name :</label>
-                <input type="text" name="FileName" id="FileName" class="form-control" placeholder="Example: John Doe">
-              </div>
-
-              <div class="form-group">
-                <label for="link">Pest youtube link here:</label><br>
-                <input type="text" name="link" id="link" class="form-control" placeholder="Example: John Doe">
-              </div>
-              <div class="form-group">
-                <input type="submit" class="form-control btn btn-success mt-4" value="SUBMIT"  >  
-              </div>
-
-          </form>
-
-        </div>
-        </div>
-        <div class="row my-3">
       <div class="col-lg-6 bg-dark text-light offset-lg-3">
 
         <form action="php_MediaUpload.php" method="POST" enctype="multipart/form-data">
-          <legend class="text-center">Upload Audio</legend>
+          <legend class="text-center">Research Paper</legend>
           <hr class="bg-light">
 
             <div class="form-group">
-              <label for="FileName">Audio Name :</label>
+              <label for="FileName">Topic :</label>
               <input type="text" name="FileName" id="FileName" class="form-control" placeholder="Example: John Doe">
             </div>
 
             <div class="form-group">
-              <label for="document">Select Audio File:</label><br>
+              <label for="document">Select PDF File:</label><br>
               <input id="document" type="file" name="document">
             </div>
             <div class="form-group">
-              <input type="submit" class="form-control btn btn-success mt-4" value="SUBMIT"  >  
+              <input type="submit" class="form-control btn btn-success mt-4" value="SUBMIT">  
             </div>
 
         </form>
@@ -109,6 +83,5 @@
     unset($_SESSION['msg']);
   } ?>
 
-  <!-- <?php include_once "templates/footerSection.php" ?> -->
 
   <?php include_once "templates/footer.php" ?>

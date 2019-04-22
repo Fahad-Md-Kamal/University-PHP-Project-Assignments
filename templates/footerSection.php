@@ -1,7 +1,7 @@
 <div class="row bg-dark p-5">
 <div class="mb-5 d-flex col-12 justify-content-center">
-    <form class="form-inline my-2">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2" action="services.php" method="get">
+      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
     </form>
 </div>
@@ -38,9 +38,11 @@
             <li class="list-group-item">Porta ac consectetur ac</li>
             <li class="list-group-item">Vestibulum at eros</li>
             <li class="list-group-item h3 text-info">Social Links</li>
-            <li class="list-group-item">Twitter</li>
-            <li class="list-group-item">LinkedIn</li>
-            <li class="list-group-item">Facebook</li>
+            <li class="list-group-item h2 d-flex justify-content-between">
+                <a href="http://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="http://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="http://www.facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+            </li>
         </ul>
     </div>
 </div>

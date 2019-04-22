@@ -29,7 +29,7 @@ if($_POST){
     if($conn->query($sql)){
         $_SESSION['msg'] = "Your information have been recorder.";
     }
-    header("location:index.php");
+    header("location:userInfo.php");
 
     }
 ?>

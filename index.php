@@ -21,24 +21,38 @@
           <p class="lead">
             <div class="row">
                 <div class="col-md-6">
-              <!-- < ?php 
-                if(isset($_COOKIE['attempt'])){
-                echo " Wait for 3 minutes for further attempts <script> alert('Detected! Suspecious login attempts')</script>";
-                }else{
-              ?> -->
-                    <form action="php_GetStart.php" method="post">
 
-                        <input class="form-control" Id="email" type="email" name="email" placeholder="Email" autofocus>
-                        <!-- <small id="emailHelp" class="form-text text-muted email-msg"></small> -->
+                    <form action="php_GetStart.php" method="post">
+                          
+                        <input class="form-control" Id="email" type="email" name="email" placeholder="Email">
+                        <span id="hidden" class="d-none">
 
                         <input class="form-control my-5" Id="password" type="password" name="pass" placeholder="Password">
-                        <!-- <small id="passHelp" class="form-text text-muted email-msg"></small> -->
-                        
                         <input id="tc" type="checkbox" name="tc" value="1"> <label for="tc"> &nbsp; I agree <a class="text-dark" href="#">Terms & Conditions</a></label>
-                        
-                        <input class="btn btn-lg btn-outline-light mt-5" onclick="return emailValid();" type="submit" value="Get Strated">
+
+                      </span>   
+                        <input id="submit" class="btn btn-lg btn-outline-light mt-5" onclick="return emailValid();" type="submit" value="Get Strated">
                     </form>
-                <!-- < ?php }?> -->
+                   
+
+<script>
+
+
+function validateEmail(email) {
+				var re = '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+				return re.test(email);
+}
+			
+			function emailValid(){
+				var email = document.getElementById('error').value;
+				if(!validateEmail(email)){
+					return false;
+				}
+				return true;
+			}
+</script>
+
+
                 </div>
             </div>
           </p>
@@ -48,9 +62,9 @@
 
 
     <div class="row">
-      <div class="col-sm-12 col-lg-4 mb-4">
+      <div class="col-sm-12 col-lg-4 mb-4 text-center">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a class="display-1 text-info" href="#"><i class="far fa-newspaper"></i></a>
           <div class="card-body">
             <h4 class="card-title">
               <a class="text-dark" href="#">Latest News</a>
@@ -63,9 +77,9 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-lg-4 mb-4">
+      <div class="col-sm-12 col-lg-4 mb-4 text-center">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a class="display-1 text-info" href="#"><i class="fas fa-trophy"></i></a>
           <div class="card-body">
             <h4 class="card-title">
               <a class="text-dark" href="#">Awards</a>
@@ -78,9 +92,9 @@
         </div>
       </div>
   
-      <div class="col-sm-12 col-lg-4 mb-4">
+      <div class="col-sm-12 col-lg-4 mb-4 text-center">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a class="display-1 text-info" href="#"><i class="fas fa-video"></i></a>
           <div class="card-body">
             <h4 class="card-title">
               <a class="text-dark" href="#">Press Releases</a>
@@ -97,16 +111,36 @@
     </div>
 
   <?php if(isset($_SESSION['msg'])){
-    
     $msg = $_SESSION['msg'];
-    
     echo "<script>alert('$msg');</script>";
-
     unset($_SESSION['msg']);
   } ?>
-
-
   </div>
+
   <?php include_once "templates/footerSection.php" ?>
 
   <?php include_once "templates/footer.php" ?>
+
+  <script>
+			
+
+
+      $('#email').focusout(function(){
+        if($(this).val ==''){
+          $('#hidden').addClass('d-done').removeClass('d-block');
+          $(this).focus();
+        }else{
+        $('#hidden').addClass('d-block').removeClass('d-none');
+        }});
+			
+
+        function agr(){
+        if (confirm('Do you agree with our terms and conditions...?')) {
+          return true;
+        } else {
+          return false;
+          }
+        }
+
+
+	</script>

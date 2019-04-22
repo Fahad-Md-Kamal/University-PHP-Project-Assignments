@@ -6,13 +6,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/1080x500" alt="First slide">
+              <img class="d-block img-fluid" src="Media/pic-1.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/1080x500" alt="Second slide">
+              <img class="d-block img-fluid" src="Media/pic-2.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/1080x500" alt="Third slide">
+              <img class="d-block img-fluid" src="Media/pic-3.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

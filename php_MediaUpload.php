@@ -9,26 +9,27 @@ if($_POST){
         $_SESSION['msg'] = "Please enter File Name";
     }elseif($_FILES['document']['size'] == 0){
         $uploadFile = false;
-        $_SESSION['msg'] = "Please upload valid Mp3 or AAC file";
+        $_SESSION['msg'] = "Please upload PDF file";
     }elseif($uploadFile){
-        $ValidFileExtensions = ['mp3','aac'];
+        $ValidFileExtensions = ["pdf", "txt"];
 
         $documentName = $_FILES['document']['name'];
         $fileSize = $_FILES['document']['size'];
         $fileTmpName = $_FILES['document']['tmp_name'];
         $fileType = $_FILES['document']['type'];
         $fileExtension = pathinfo($documentName, PATHINFO_EXTENSION);
-        $uploadPath = "Media/".$documentName;
+        $fileNewName = $documentName.$fileExtension;
+        $uploadPath = "Media/".$fileNewName;
     
         if(!in_array($fileExtension,$ValidFileExtensions)){
             
             $uploadFile = false;
-            $_SESSION['msg'] = "Not a valid Mp3 or AAC file";
+            $_SESSION['msg'] = "Not a valid text or PDF file";
         
         }elseif($fileSize > 10000000) {
         
             $uploadFile = false;
-            $_SESSION['msg'] = "This is too large, Please upload file less then 10MB";
+            $_SESSION['msg'] = "Please upload file less then 10MB";
         
         }
 
@@ -36,16 +37,15 @@ if($_POST){
 
             include_once"dbConnection.php"; 
             $conn = dbConncetion();
-
             
-            move_uploaded_file($fileTmpName, $uploadPath);
-            $sql = "INSERT INTO MediaFile(FileName, FileLink, MediaType) VALUES ('$FileName', '$documentName','A')";
+            $sql = "INSERT INTO MediaFile(FileTopic, FileName) VALUES ('$FileName', '$fileNewName')";
            
             if($conn->query($sql)){
-                $_SESSION['msg'] = "Audio Uploaded";
+                move_uploaded_file($fileTmpName, $uploadPath);
+                $_SESSION['msg'] = "File Uploaded";
             }
             else{
-                $_SESSION['msg'] = "Failed to input Audio".$conn->error;
+                $_SESSION['msg'] = "Failed to input File".$conn->error;
             }
         }
     }

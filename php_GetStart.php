@@ -6,6 +6,8 @@ if($_POST){
 
     $email = $_POST['email'];
     $password = $_POST['pass'];
+    $tc =$_POST['tc'];
+
 
     if(!isset($_SESSION['attempt'])){
         $_SESSION['attempt'] = 0;
@@ -16,6 +18,8 @@ if($_POST){
         $_SESSION['msg'] = "Please enter a valid email address";
     }elseif(empty($password)){
         $_SESSION['msg'] = "Please enter a password";
+    }elseif($tc == 0){
+        $_SESSION['msg'] = "You have to agree with the terms and conditions";
     }else{
         $sql = "SELECT * FROM customerdetails where EmailAddress='$email'";
 

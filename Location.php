@@ -3,7 +3,11 @@
   <!-- Navigation -->
   <?php include_once "templates/mainNav.php" ?>
 
-
+  <?php if(isset($_SESSION['msg'])){
+    $msg = $_SESSION['msg'];
+    echo "<script>alert('$msg');</script>";
+    unset($_SESSION['msg']);
+  } ?>
 
 
   <!-- Page Content -->
@@ -18,45 +22,55 @@
 
 
       </div>
+<hr>
+<hr>
+<hr>
+  <div class="row">
+  <!-- <p class="display-1 text-light text-center">BOOK YOUR SEAT</p> -->
 
-  <div class="row my-5">
+  <div class="col-md-6 offset-3 bg-success text-light my-3">
+      <form class="form py-5" action="php_EnrollCourse.php" method="post">
+  <legend class="text-center">BOOK YOUR SEAT</legend>
+  <!-- <input type="hidden" name="page" value="login"> -->
 
-  <p class="display-1 text-info text-center">BOOK YOUR SEAT</p>
-  <hr >
-  <div class="col-lg-6">
-        
-      <?php
-
-include_once "dbConnection.php"; 
-$conn = dbConncetion();
-
-$sql = "SELECT * FROM CoursesInfo";
-$result = $conn->query($sql);
-
-foreach($result as $row){
-$Id = $row['id'];
-?>
-    <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a class="text-dark" href="#"><?=$row['CourseName']?></a>
-        </h4>
-        <p class="card-text"><?=$row['CourseDetails']?></p>
+      <div class="form-group">
+          <label for="CQ">Email:</label>
+          <input class="form-control" type="email" name="email">
       </div>
-      <div class="card-footer">
-        <a class="btn btn-outline-danger" href="php_EnrollCourse.php?CourseName=<?=$row['CourseName']?>">Book This Course</a>
+      <div class="form-group">
+          <label for="CustomerEmail">Select Courese:</label>
+          <select name="Course" class="form-control">
+          <?php 
+            if(isset($_GET['CourseName'])){
+              $CourseName = $_GET['CourseName'];
+            }else{
+              $CourseName = "Select Course Name";
+            }?>
+          <?=$CourseName?>
+            <option value="<?=$CourseName?>"><?=$CourseName?></option>
+            <?php
+              include_once "dbConnection.php"; 
+              $conn = dbConncetion();
+              $sql = "SELECT * FROM CoursesInfo";
+              $result = $conn->query($sql);
+              foreach($result as $row){
+            ?>
+            <option value="<?=$row['CourseName']?>"><?=$row['CourseName']?></option>
+            <?php }?>
+
+          </select>
       </div>
-    </div>
+      
+      <div class="form-group">
+          <input type="submit" class="btn btn-info form-control" value="BOOK">
+      </div>
+  </form>
   </div>
 
-<?php }?>
+  </div>
+
+
 
 </div>
-
-
-
     </div>
-
-
   <?php include_once "templates/footer.php" ?>

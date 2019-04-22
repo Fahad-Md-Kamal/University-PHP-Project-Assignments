@@ -12,7 +12,9 @@
             if(isset($_SESSION['UserRole']) && $_SESSION['UserRole'] == "ADMIN"){              
           ?>
             <div class="btn-group">
-              <button type="button" class="btn btn-secondary text-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              
+              
+              <button type="button" class="btn btn-warning text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Admin Control
               </button>
               <div class="dropdown-menu">
@@ -22,7 +24,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="AdminEnrollList.php">Enroll List</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="AdminMedia.php">Media</a>
+                <a class="dropdown-item" href="AdminMedia.php">Research Paper Upload</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="AdminContact.php">User Contact</a>
                 <!--  -->
@@ -36,44 +38,35 @@
         <li class="nav-item">
             <a class="nav-link" href="index.php">Home
             </a>
-          </li>   
-
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="services.php">Services</a>
           </li>
-
-
-
           <li class="nav-item">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default text-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About Us
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="ourApproch.php">Our Approach</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="Location.php">Location</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="contactUs.php">Contact Us</a>
-              </div>
-            </div>
+            <a class="nav-link" href="contactUs.php">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ourApproch.php">Our Approach</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Location.php">Location</a>
           </li>
 
+          <?php if(isset($_SESSION['loggedIn'])){ ?>
+            <li class="nav-item">
+            <a class="nav-link" href="userInfo.php">My Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="php_logout.php">Log Out</a>
+          </li>
+          <?php }else{ ?>
 
           <li class="nav-item">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default text-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user"></i></button>
-            
-              <div class="dropdown-menu">
-             
-              <?php if(isset($_SESSION['loggedIn'])){ ?>
-                <a class="dropdown-item text-info" href="userInfo.php">My Details</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="php_logout.php">Log Out</a>
-              <?php }else{ ?>
-                <a class="dropdown-item text-primary" href="index.php#sign_up">Sign Up </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-success" href="login.php">Log In </a>
+            <a class="nav-link" href="signUpForm.php">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="login.php">Log In</a>
+          </li>
               <?php } ?>
             
             </div>

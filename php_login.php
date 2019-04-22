@@ -38,7 +38,7 @@ if($_POST){
 
         }else{
             if($_SESSION['attempt'] > 2 ){
-                setcookie('attempt', true, time() + 10, "/");
+                setcookie('attempt', true, time() + 180, "/");
                 unset($_SESSION['attempt']);
             }
         $_SESSION['attempt']++;

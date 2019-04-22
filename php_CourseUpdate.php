@@ -25,9 +25,6 @@ if ($_POST) {
         CourseDetails='$CourseDetails'
         WHERE id='$id'";
 
-// echo $sql;exit;
-
-
     if (empty($CourseName)) {
             $uploadFile = false;
             $_SESSION['msg'] = "Please enter a Unique product name";
@@ -48,7 +45,6 @@ if ($_POST) {
     if($uploadFile){
         
         $chk = "SELECT * FROM CoursesInfo WHERE CourseName = '$CourseName'";
-        // echo $chk;exit;
         
         $result = $conn->query($chk);
         if($result->num_rows > 1){

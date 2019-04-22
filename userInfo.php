@@ -1,28 +1,16 @@
-
-
-
-<?php 
-
-include_once "templates/head.php" ?>
+<?php include_once "templates/head.php" ?>
 
   <!-- Navigation -->
-  <?php 
-  include_once "templates/mainNav.php";
+  <?php include_once "templates/mainNav.php";
 
 
 if(isset($_SESSION['loggedIn'])){
-
     if(isset($_GET['id'])){
-    
         $id = $_GET['id'];
-    
     }else{
-    
         $id = $_SESSION['id'];
-    
     }
-    
-    include_once"dbConnection.php"; 
+    include_once "dbConnection.php"; 
     $conn = dbConncetion();
 
         $sql = "SELECT * FROM customerdetails WHERE id = '$id'";
@@ -72,7 +60,7 @@ if(isset($_SESSION['loggedIn'])){
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="email" class="form-control" id="email" value="<?=$row['EmailAddress']?>" >
+                <input type="email" name="email" class="form-control" id="email" value="<?=$row['EmailAddress']?>" readonly>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>

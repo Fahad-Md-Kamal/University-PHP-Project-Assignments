@@ -6,7 +6,6 @@
   <!-- Navigation -->
   <?php include_once "templates/mainNav.php"?>
 
-
   <!-- Page Content -->
   <div class="container">
 

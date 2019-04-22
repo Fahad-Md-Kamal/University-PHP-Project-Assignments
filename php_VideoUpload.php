@@ -14,7 +14,6 @@ if($_POST){
 
         $array = explode('=',$link);
         $video = end($array);
-        // echo($video);exit;
 
 
         $sql = "INSERT INTO MediaFile (FileName, FileLink, MediaType) 
