@@ -8,9 +8,11 @@
 </div>
     <div class="col-sm-12 col-md-4">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item h3 text-info">Company</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Company</li>
             <li class="list-group-item">Mission And Vision</li>
-            <li class="list-group-item h3 text-info">Our Products</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Our Products</li>
             <li class="list-group-item">Anit-virus</li>
             <li class="list-group-item">Fire-wall</li>
             <li class="list-group-item">Application</li>
@@ -19,11 +21,13 @@
 
     <div class="col-sm-12 col-md-4 mt-sm-2 mt-md-0">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item h3 text-info">Our Partners</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Our Partners</li>
             <li class="list-group-item">CISCO</li>
             <li class="list-group-item">Avast</li>
             <li class="list-group-item">IBM</li>
-            <li class="list-group-item h3 text-info">Helpful Links</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Helpful Links</li>
             <li class="list-group-item"><a href="contactUs.php">Contact Us</a></li>
             <li class="list-group-item"><a href="services.php">Our Services</a></li>
             <li class="list-group-item"><a href="ourApproch.php">Our Approch</a></li>
@@ -33,12 +37,14 @@
     
     <div class="col-sm-12 col-md-4 mt-sm-2 mt-md-0">
         <ul class="list-group bg-dark">
-            <li class="list-group-item h3 text-info">Our Policies</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Our Policies</li>
             <li class="list-group-item"><a href="#">Policies 1</a></li>
             <li class="list-group-item"><a href="#">Policies 2</a></li>
             <li class="list-group-item"><a href="#">Policies 3</a></li>
             <li class="list-group-item"><a href="#">Policies 4</a></li>
-            <li class="list-group-item h3 text-info">Social Links</li>
+            <li class="list-group-item bg-info"></li>
+            <li class="list-group-item h3 text-dark">Social Links</li>
             <li class="list-group-item h2 d-flex justify-content-between">
                 <a href="http://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="http://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
