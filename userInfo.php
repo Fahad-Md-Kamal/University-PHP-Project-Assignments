@@ -27,7 +27,7 @@ if(isset($_SESSION['loggedIn'])){
 
     <div class="row">
 
-      <div class="bg-success my-5 py-2 text-light col-lg-6 offset-3">
+      <div class="bg-success my-5 py-2 text-light col-lg-6 offset-lg-3">
         <form class="form" action="php_UserUpdate.php" method="post">
             <hr class="bg-light">
             <legend class="text-center"> User Details</legend>

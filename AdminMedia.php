@@ -64,8 +64,8 @@
       foreach($result as $row){
     ?>
       <tr>
+        <td><?=$row['FileTopic']?></td>
         <td><?=$row['FileName']?></td>
-        <td><?=$row['FileLink']?></td>
         
         <td><a class="btn btn-outline-danger" href="php_deleteMedia.php?MediaId=<?=$row['id']?>">DELETE</a></td>
       </tr>

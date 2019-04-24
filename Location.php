@@ -28,14 +28,14 @@
   <div class="row">
   <!-- <p class="display-1 text-light text-center">BOOK YOUR SEAT</p> -->
 
-  <div class="col-md-6 offset-3 bg-success text-light my-3">
+  <div class="col-md-6 offset-md-3 bg-success text-light my-3">
       <form class="form py-5" action="php_EnrollCourse.php" method="post">
   <legend class="text-center">BOOK YOUR SEAT</legend>
   <!-- <input type="hidden" name="page" value="login"> -->
 
       <div class="form-group">
           <label for="CQ">Email:</label>
-          <input class="form-control" type="email" name="email">
+          <input class="form-control" type="email" name="email" placeholder="Your Booking Mail" >
       </div>
       <div class="form-group">
           <label for="CustomerEmail">Select Courese:</label>

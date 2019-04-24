@@ -11,7 +11,7 @@
 
     <div class="row">
 
-      <div class="bg-success my-5 py-2 text-light col-lg-10 offset-1">
+      <div class="bg-success my-5 py-2 text-light col-md-10 offset-md-1">
       
       <?php 
                 $email="";
@@ -30,11 +30,11 @@
 
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="email" class="form-control" id="email" value="<?=$email?>">
+                <input placeholder="Example:: admin@gmail.com" type="email" name="email" class="form-control" id="email" value="<?=$email?>">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="pass" class="form-control" id="password">
+                <input placeholder=". . . Your password" type="password" name="pass" class="form-control" id="password">
             </div>
             
             <div class="form-group">
